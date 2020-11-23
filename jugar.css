@@ -1,0 +1,91 @@
+/* Edita las tablas,contenedores,contenedor de tabla,headers,filas,columnas de la tabla ,los enlaces
+ *el celdas vacias, palabra seleccionada, mensaje a mostrar y boton del mensaje.
+*/
+#enlaces{
+  text-align: center;
+}
+#tablaPalabras{
+  margin: auto;
+  border-collapse: collapse;
+  text-align: center;
+  border-spacing: 10px 1px;
+  font-size: 10px;
+  width: 95%;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.container {
+  margin-top: 3vh;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 18px;
+
+}
+
+td {
+  width: 36px;
+  height: 36px;
+  border: 1px solid black;
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  font-family: arial;
+}
+
+td.celdasVacias{
+  background: red;
+}
+
+td.palabraSelec {
+  background: green;
+}
+
+td.comienzo {
+  cursor: pointer;  
+}
+
+td.comienzo label {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  text-align: left;
+  font-size: 10px;
+}
+
+td.comienzo:hover {
+  background: #eee;
+}
+
+td.comienzo.palabraSelec:hover {
+  background: #ddf;
+}
+
+.mensaje {
+  position: absolute;
+  color: white;
+  left: 25vw;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px;
+  width: 50vw;
+  z-index: 1000;
+  background: rgba(0, 0, 25, 0.9)
+}
+
+.mensaje button {
+  margin-top: 10px;
+}
+body{
+  width: auto;
+  height: auto;
+}

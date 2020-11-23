@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Crucigrama</title>
+  
+    <!-- Convierte a la pagina en responsive -->
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+    <!-- Añade css a la pagina -->
+
+      <link rel="stylesheet" href="jugar.css">
+
+  
+</head>
+
+<body>
+
+    <!-- Accede a informacion de lq aplicacion Vue que esta implementada en logica.js -->
+
+  <div id="app" class="container" @keyup.escape="palabraSelec = undefined">
+    <!-- Añade tabla contenedora para mostrar el curcigrama en pantalla -->
+
+  <div class="table-container" style="display:none;" v-show="true">
+    <!-- Tiempos y mensaje -->
+    <div class="temporizador">{{tiempo}}</div>
+    <div class="mensaje" v-if="mensaje !== undefined">
+      <div class="content">{{mensaje}}</div>
+      <button @click="mensaje = undefined" class="btn btn-primary">OK</button>
+    </div> 
+    <!-- Tabla que contiene el dibujo de la matriz del crucigrama -->
+    <table>
+      <tr v-for="(fila, y) in matriz" :key="y">
+        <td v-for="(celda, x) in fila" :class="{celdasVacias: celda.celdasVacias, comienzo: !!celda.comienzo, palabraSelec: celda.arrayPalabras.includes(palabraSelec)}" @click="seleccionaPalabra(celda.comienzo)">
+          <label v-if="!!celda.comienzo">{{celda.comienzo}}</label>
+          {{celda.arrayPalabras.some(i => completed[i]) ? celda.letra : ' '}}
+        </td>
+      </tr>
+    </table>
+    <!-- Muestra boton para añadir palabra y ver la descripcion del mensaje. -->
+    <div v-if="palabraSelec !== undefined" style="text-align: center;">
+      <p class="descripcion" v-if="descripcion">
+        {{descripcion}}
+      </p>
+      <input v-model="respuesta" ref="input" @keyup.enter="corrigePalabra"/>
+      <button @click="corrigePalabra" class="btn btn-primary">Añadir</button>
+      <button @click="aniadeLetraCorrecta" class="btn btn-danger" >Descripcion</button>
+
+
+    </div>
+    <hr>
+    <!-- Boton para finalizar la partida -->
+    <button class="btn btn-block btn-primary" @click="calcularPuntaje" style="background-color: black" >Finalizar partida</button>
+  </div>  
+  <!-- Tabla de palabras -->
+  </div>
+      <div>
+      <table id="tablaPalabras" >
+      <tr>
+      <th>Descripcion</th>
+      <th>Orientacion</th>
+      </tr>
+      <tr>
+      <td>1.Lenguaje de programación interpretado</td>
+      <td>Vertical</td>
+      </tr>
+      <tr>
+      <td>2.Lenguaje de marcado para paginas web</td>
+      <td>Horizontal</td>
+      </tr>
+      <tr>
+      <td>3.Lenguaje que describe el estilo de un documento HTML</td>
+      <td>Vertical</td>
+      </tr>
+      <tr>
+      <td>4.En general cuando hay varios estilos definidos para un mismo elemento se dice que los estilo van en... </td>
+      <td>Horizontal</td>
+      </tr>
+      <tr>
+      <td>5.Define un conjunto de objetos estándar para la  representación del HTML en memoria </td>
+      <td>Vertical</td>
+      </tr>
+      <tr>
+      <td>Objeto que Permite obtener más información sobre los eventos  que se han producido</td>
+      <td>Horizontal</td>
+      </tr>
+      </tr>
+      <tr>
+      <td>Nombre de elementos que estan dentro de los simbolos < ></td>
+      <td>Horizontal</td>
+      </tr>
+      </tr>
+      <tr>
+      <td>Es un contenedor de metadatos</td>
+      <td>Horizontal</td>
+      </tr>
+      </tr>
+      <tr>
+      <td>Permiten navegar entre documentos</td>
+      <td>Vertical</td>
+      </tr>
+      </tr>
+      <tr>
+      <td>Se almacenan como propiedades de tipo función'</td>
+      <td>Horizontal</td>
+      </tr>
+      </table>
+    </div>
+    <!-- Script para etiquetas e funcionalidades de vue -->
+    <script src='https://unpkg.com/vue'></script>
+    <div id="enlaces">
+      <a href="index.html"> Inicio</a>
+      <a href="Clasificacion.html"> Clasificacion</a>
+    </div>  
+
+  
+    <!--Script para tomar información de la logica del programa.-->
+
+    <script  src="logica.js"></script>
+
+
+
+
+</body>
+
+</html>

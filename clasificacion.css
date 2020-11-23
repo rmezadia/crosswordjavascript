@@ -1,0 +1,24 @@
+/* Edita las tablas,headers,filas y columnas de la tabla y los enlaces.*/
+
+table {
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+}
+h1{
+	
+	text-align: center;
+}
+td,th {
+	border: 1px solid black;
+	padding: 5px;
+	align-content: center;
+	text-align: center;
+}
+#enlaces{
+	
+	text-align: center;
+}
+
+
